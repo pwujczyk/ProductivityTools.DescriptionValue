@@ -12,36 +12,30 @@ namespace ProductivityTools.DescriptionValue
         public static string GetDescription(this Enum value)
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
-
-            DescriptionAttribute attribute = fi.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
-
-            if (attribute != null)
-            {
-                return attribute.Description;
-            }
-
-            return value.ToString();
+            return GetDescription(fi);
         }
 
-        public static string GetDescription(this Type @class, string propertyName)
+        public static string GetPropertyDescription(this Type @class, string propertyName)
         {
             var property = @class.GetProperty(propertyName);
-            DescriptionAttribute attribute = property.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
-            return attribute.Description;
+            return GetDescription(property);
         }
 
-        public static string GetDescription<T>(this Type @class, string methodName)
+        public static string GetMethodDescription(this Type @class, string methodName)
         {
+            var method = @class.GetMethod(methodName);
+            return GetDescription(method);
+        }
 
-            var unaryExpression = (UnaryExpression)expression.Body;
-            var methodCallExpression = (MethodCallExpression)unaryExpression.Operand;
-            var methodInfoExpression = (ConstantExpression)methodCallExpression.Arguments.Last();
-            var methodInfo = (MemberInfo)methodInfoExpression.Value;
+        private static string GetDescription(ICustomAttributeProvider provider)
+        {
+            DescriptionAttribute[] attributes = provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
 
-
-            var method = @class.GetMethod(methodInfo.Name);
-            DescriptionAttribute attribute = method.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
-            return attribute.Description;
+            if (attributes != null && attributes.Length > 0)
+            {
+                return attributes[0].Description;
+            }
+            return string.Empty;
         }
     }
 }

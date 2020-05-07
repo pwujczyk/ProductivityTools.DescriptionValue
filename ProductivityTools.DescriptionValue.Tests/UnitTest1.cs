@@ -27,9 +27,6 @@ namespace ProductivityTools.DescriptionValue.Tests
             var testClass = new TestClass();
             var rEnum=testClass.Enum.GetDescription();
             Assert.AreEqual("OneValue", rEnum);
-
-            var rProperty=testClass.GetType().GetDescription("Enum");
-            Assert.AreEqual("Property description", rProperty);
         }
 
         [TestMethod]
@@ -37,7 +34,7 @@ namespace ProductivityTools.DescriptionValue.Tests
         {
             var testClass = new TestClass();
 
-            var rProperty = testClass.GetType().GetDescription("Enum");
+            var rProperty = testClass.GetType().GetPropertyDescription("Enum");
             Assert.AreEqual("Property description", rProperty);
         }
 
@@ -46,9 +43,8 @@ namespace ProductivityTools.DescriptionValue.Tests
         public void MethodDescription()
         {
             var testClass = new TestClass();
-
-            var rProperty = testClass.GetType().GetDescription<TestClass>(x=>x.Method1);
-            Assert.AreEqual("Property description", rProperty);
+            var rProperty = testClass.GetType().GetMethodDescription("Method1");
+            Assert.AreEqual("Method description", rProperty);
         }
     }
 }
