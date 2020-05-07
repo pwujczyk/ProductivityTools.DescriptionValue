@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ProductivityTools.DescriptionValue.Tests
@@ -9,6 +10,7 @@ namespace ProductivityTools.DescriptionValue.Tests
         Two
     }
 
+    [System.ComponentModel.Description("Class description")]
     class TestClass
     {
         [System.ComponentModel.Description("Field description")]
@@ -46,7 +48,7 @@ namespace ProductivityTools.DescriptionValue.Tests
         public void MethodDescription()
         {
             var testClass = new TestClass();
-            var rProperty = testClass.GetType().GetMethodDescription("Method1");
+            var rProperty = typeof(TestClass).GetMethodDescription("Method1");
             Assert.AreEqual("Method description", rProperty);
         }
 
@@ -55,6 +57,13 @@ namespace ProductivityTools.DescriptionValue.Tests
         {
             var field = typeof(TestClass).GetFieldDescription("Field");
             Assert.AreEqual("Field description", field);
+        }
+
+        [TestMethod]
+        public void ClassDescription()
+        {
+            var field = typeof(TestClass).GetDescription();
+            Assert.AreEqual("Class description", field);
         }
     }
 }

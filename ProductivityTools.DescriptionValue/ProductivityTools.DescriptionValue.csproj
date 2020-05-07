@@ -2,6 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Library allows to get description content from:
+- Property
+- Field
+- Method
+- Enum</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/pwujczyk/ProductivityTools.DescriptionValue</RepositoryUrl>
+    <PackageIcon>ProductivityTools_blue_85px_1.png</PackageIcon>
+    <PackageTags>Description DescriptionAttribute</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Images\Nuget\ProductivityTools_blue_85px_1.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
