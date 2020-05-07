@@ -17,14 +17,23 @@ namespace ProductivityTools.DescriptionValue
 
         public static string GetPropertyDescription(this Type @class, string propertyName)
         {
+            if (string.IsNullOrEmpty(propertyName)) throw new ArgumentException($"Please provide {nameof(propertyName)}");
             var property = @class.GetProperty(propertyName);
             return GetDescription(property);
         }
 
         public static string GetMethodDescription(this Type @class, string methodName)
         {
+            if (string.IsNullOrEmpty(methodName)) throw new ArgumentException($"Please provide {nameof(methodName)}");
             var method = @class.GetMethod(methodName);
             return GetDescription(method);
+        }
+
+        public static string GetFieldDescription(this Type type, string fieldName)
+        {
+            if (string.IsNullOrEmpty(fieldName)) throw new ArgumentException($"Please provide {nameof(fieldName)}");
+            var field = type.GetField(fieldName);
+            return GetDescription(field);
         }
 
         private static string GetDescription(ICustomAttributeProvider provider)
