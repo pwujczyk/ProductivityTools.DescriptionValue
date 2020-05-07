@@ -13,6 +13,9 @@ namespace ProductivityTools.DescriptionValue.Tests
     {
         [System.ComponentModel.Description("Property description")]
         public EnumExample Enum { get; set; }
+
+        [System.ComponentModel.Description("Method description")]
+        public void Method1() { }
     }
 
     [TestClass]
@@ -35,6 +38,16 @@ namespace ProductivityTools.DescriptionValue.Tests
             var testClass = new TestClass();
 
             var rProperty = testClass.GetType().GetDescription("Enum");
+            Assert.AreEqual("Property description", rProperty);
+        }
+
+
+        [TestMethod]
+        public void MethodDescription()
+        {
+            var testClass = new TestClass();
+
+            var rProperty = testClass.GetType().GetDescription<TestClass>(x=>x.Method1);
             Assert.AreEqual("Property description", rProperty);
         }
     }
