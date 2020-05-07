@@ -11,14 +11,21 @@ namespace ProductivityTools.DescriptionValue
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());
 
-            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+            DescriptionAttribute attribute = fi.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
 
-            if (attributes != null && attributes.Any())
+            if (attribute != null )
             {
-                return attributes.First().Description;
+                return attribute.Description;
             }
 
             return value.ToString();
+        }
+
+        public static string GetDescription(this Type @class,string propertyName)
+        {
+            var property = @class.GetProperty(propertyName);
+            DescriptionAttribute attribute = property.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
+            return attribute.Description;
         }
     }
 }

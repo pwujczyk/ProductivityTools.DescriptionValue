@@ -2,17 +2,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ProductivityTools.DescriptionValue.Tests
 {
-    enum E
+    enum EnumExample
     {
         [System.ComponentModel.Description("OneValue")]
-        one,
-        two
+        One,
+        Two
     }
 
     class TestClass
     {
         [System.ComponentModel.Description("Property description")]
-        public E Enum { get; set; }
+        public EnumExample Enum { get; set; }
     }
 
     [TestClass]
@@ -22,8 +22,20 @@ namespace ProductivityTools.DescriptionValue.Tests
         public void EnumDescription()
         {
             var testClass = new TestClass();
-            var r=testClass.Enum.GetDescription();
-            Assert.AreEqual("OneValue", r);
+            var rEnum=testClass.Enum.GetDescription();
+            Assert.AreEqual("OneValue", rEnum);
+
+            var rProperty=testClass.GetType().GetDescription("Enum");
+            Assert.AreEqual("Property description", rProperty);
+        }
+
+        [TestMethod]
+        public void PropertyDescription()
+        {
+            var testClass = new TestClass();
+
+            var rProperty = testClass.GetType().GetDescription("Enum");
+            Assert.AreEqual("Property description", rProperty);
         }
     }
 }
