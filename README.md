@@ -1,27 +1,39 @@
-<!--Category:C#,SQL--> 
+<!--Category:C#--> 
  <p align="right">
     <a href="https://www.nuget.org/packages/ProductivityTools.DescriptionValue/"><img src="Images/Header/Nuget_border_40px.png" /></a>
-    <a href="http://productivitytools.tech/productivitytools-createsqlserverdatabase/"><img src="Images/Header/ProductivityTools_green_40px_2.png" /><a> 
+    <a href="http://productivitytools.tech/description-attribute-value/"><img src="Images/Header/ProductivityTools_green_40px_2.png" /><a> 
     <a href="https://www.github.com/pwujczyk/ProductivityTools.DescriptionValue"><img src="Images/Header/Github_border_40px.png" /></a>
 </p>
 <p align="center">
-    <a href="https://www.powershellgallery.com/packages/ProductivityTools.PSSetLockScreen/">
+    <a href="http://productivitytools.tech/">
         <img src="Images/Header/LogoTitle_green_500px.png" />
     </a>
 </p>
 
 
-# ProductivityTools.DescriptionValue
+# Description attribute value
 
-Library allows to get description content from:
+Library allows to get description content from DescriptionAttribute.
+<!--more-->
+
+Currently it retrieve value from following elements:
+
 - Property
-- Field
+
+- Field 
+
 - Method
+
 - Enum
 
-```
-typeof(TestClass).GetPropertyDescription("PropertyName");
-typeof(TestClass).GetFieldDescription("FieldName");
-typeof(TestClass).GetMethodDescription("Method1");
+
+
+Usage example:
+```c#
+typeof(TestClass).GetPropertyDescription("PropertyName"); 
+typeof(TestClass).GetFieldDescription("FieldName"); 
+typeof(TestClass).GetMethodDescription("Method1"); 
 testClass.Enum.GetDescription();
 ```
+
+<img src="Images/GetDescription.png" />
