@@ -43,7 +43,8 @@ namespace ProductivityTools.DescriptionValue
 
         private static string GetDescriptionValue(ICustomAttributeProvider provider)
         {
-            DescriptionAttribute[] attributes = provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+            DescriptionAttribute[] attributes = 
+                provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
 
             if (attributes != null && attributes.Length > 0)
             {

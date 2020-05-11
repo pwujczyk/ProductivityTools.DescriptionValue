@@ -35,5 +35,5 @@ typeof(TestClass).GetFieldDescription("FieldName");
 typeof(TestClass).GetMethodDescription("Method1"); 
 testClass.Enum.GetDescription();
 ```
-
+<!--og-image-->
 <img src="Images/GetDescription.png" />

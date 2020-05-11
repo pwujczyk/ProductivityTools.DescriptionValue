@@ -11,7 +11,8 @@
     <RepositoryUrl>https://github.com/pwujczyk/ProductivityTools.DescriptionValue</RepositoryUrl>
     <PackageIcon>ProductivityTools_blue_85px_1.png</PackageIcon>
     <PackageTags>Description DescriptionAttribute</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <PackageProjectUrl>http://productivitytools.tech/description-attribute-value/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
