@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ProductivityTools.DescriptionValue.Tests
 {
@@ -19,6 +20,8 @@ namespace ProductivityTools.DescriptionValue.Tests
         [System.ComponentModel.Description("Property description")]
         public EnumExample Enum { get; set; }
 
+        public string PropertyWithoutDescription { get; set; }
+
         [System.ComponentModel.Description("Method description")]
         public void Method1() { }
     }
@@ -32,6 +35,40 @@ namespace ProductivityTools.DescriptionValue.Tests
             var testClass = new TestClass();
             var rEnum=testClass.Enum.GetDescription();
             Assert.AreEqual("OneValue", rEnum);
+        }
+
+        [TestMethod]
+        public void EnumDescriptionExist()
+        {
+            var testClass = new TestClass();
+            var rEnum = testClass.Enum.DescriptionExists();
+            Assert.AreEqual(true, rEnum);
+        }
+
+        [TestMethod]
+        public void EnumDescriptionDoesNotExist()
+        {
+            var testClass = new TestClass();
+            testClass.Enum = EnumExample.Two;
+            var rEnum = testClass.Enum.DescriptionExists();
+            Assert.AreEqual(false, rEnum);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void EnumWithoutDescription()
+        {
+            var testClass = new TestClass();
+            testClass.Enum = EnumExample.Two;
+            var rEnum = testClass.Enum.GetDescription();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void PropertyWithoutDescription()
+        {
+            var testClass = new TestClass();
+            var rEnum = testClass.GetType().GetPropertyDescription("PropertyWithoutDescription");
         }
 
         [TestMethod]
