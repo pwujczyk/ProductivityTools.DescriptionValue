@@ -117,32 +117,12 @@ namespace ProductivityTools.DescriptionValue
         {
             var r = DescriptionSelector(provider, (x) => true, (x) => false);
             return r;
-            //DescriptionAttribute[] attributes =
-            //   provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
-            //if (attributes != null && attributes.Length > 0)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
 
         private static string GetDescriptionValue(ICustomAttributeProvider provider)
         {
             var r=DescriptionSelector(provider, (x) => x[0].Description, (x) => throw new Exception("Missing Description attribute"));
             return r;
-
-
-            //DescriptionAttribute[] attributes =
-            //    provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
-
-            //if (attributes != null && attributes.Length > 0)
-            //{
-            //    return attributes[0].Description;
-            //}
-            //return string.Empty;
         }
     }
 }

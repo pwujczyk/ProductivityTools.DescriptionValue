@@ -37,3 +37,15 @@ testClass.Enum.GetDescription();
 ```
 <!--og-image-->
 <img src="Images/GetDescription.png" />
+
+### Description is not existing
+
+Method will throw an exception if we will try to get value from item which doesn't have exception set up. You could use  DescriptionExists* methods to validate before using. Methods:
+
+extension method **DescriptionExists** for enum
+extension method **DescriptionExists** for Type
+extension method **PropertyDescriptionExists** for Property
+extension method **MethodDescriptionExists** for Method
+extension method **FieldDescriptionExists** for Field
+
+DescriptionExists

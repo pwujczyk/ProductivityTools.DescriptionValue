@@ -2,3 +2,5 @@ obj/
 debug/
 TestResults/
 .vs/
+bin/
+PublishProfiles/
