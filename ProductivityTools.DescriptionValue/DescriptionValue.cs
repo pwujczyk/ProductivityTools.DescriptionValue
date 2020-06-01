@@ -99,7 +99,9 @@ namespace ProductivityTools.DescriptionValue
 
 
 
-        private static T DescriptionSelector<T>(ICustomAttributeProvider provider, Func<DescriptionAttribute[], T> trueSelector, Func<DescriptionAttribute[], T> falseSelector)
+        private static T DescriptionSelector<T>(ICustomAttributeProvider provider, 
+            Func<DescriptionAttribute[], T> trueSelector,
+            Func<DescriptionAttribute[], T> falseSelector)
         {
             DescriptionAttribute[] attributes =
                provider.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
